@@ -46,9 +46,6 @@ jobs:
       - run:
           name: Bundler Audit
           command: bundle exec bundle-audit update && bundle exec bundle-audit check
-      - run:
-          name: Brakeman
-          command: bash ./script/brakeman
 
       # Pronto
       - run:
