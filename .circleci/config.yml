@@ -47,11 +47,6 @@ jobs:
           name: Bundler Audit
           command: bundle exec bundle-audit update && bundle exec bundle-audit check
 
-      # Pronto
-      - run:
-          name: Pronto
-          command: ./script/ci_pronto
-
       # Save Coverage Analysis
       - store_artifacts:
           path: coverage
