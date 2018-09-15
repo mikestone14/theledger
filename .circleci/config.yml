@@ -52,11 +52,6 @@ jobs:
           name: Pronto
           command: ./script/ci_pronto
 
-      # Save Brakeman
-      - store_artifacts:
-          path: tmp/brakeman.html
-          destination: security/brakeman.html
-
       # Save Coverage Analysis
       - store_artifacts:
           path: coverage
