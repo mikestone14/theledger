@@ -34,6 +34,8 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.include FeatureHelper, type: :feature
+
   if Bullet.enable?
     config.before(:each) do
       Bullet.start_request
