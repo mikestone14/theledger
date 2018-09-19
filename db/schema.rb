@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180915153217) do
+ActiveRecord::Schema.define(version: 20180919003631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "seasons", force: :cascade do |t|
+    t.integer "status", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["status"], name: "index_seasons_on_status"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
