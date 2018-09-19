@@ -1,4 +1,6 @@
 class Season < ApplicationRecord
+  has_many :games
+
   validate :one_active_season
   validates :name, presence: true
   validates :status, presence: true
