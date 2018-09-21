@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   post "/login" => "sessions#create"
 
   get "/dashboard" => "dashboard#show"
+
+  resources :games, only: [:new, :create]
 end

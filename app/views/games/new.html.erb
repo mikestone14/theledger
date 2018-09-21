@@ -1,0 +1,22 @@
+<h2>Record Game</h2>
+
+<%= form_for @game do |f| %>
+  <div>
+    <%= f.label :winner_id, "Winner" %>
+    <%= f.collection_select :winner_id, @users, :id, :name, prompt: true %>
+  </div>
+
+  <div>
+    <%= f.label :loser_id, "Loser" %>
+    <%= f.collection_select :loser_id, @users, :id, :name, prompt: true %>
+  </div>
+
+  <div>
+    <%= label_tag "game[price]", "Game price ($)" %>
+    <%= text_field_tag "game[price]" %>
+  </div>
+
+  <div>
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>
