@@ -6,18 +6,26 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </head>
 
   <body>
     <% if flash[:notice] %>
-      <div class="flash--wrapper-notice">
-        <p class="flash--text"><%= flash[:notice] %></p>
+      <div class="flash-message teal lighten-2">
+        <i class="material-icons left">check</i>
+
+        <span class="flash--text"><%= flash[:notice] %></span>
       </div>
     <% end %>
 
     <% if flash[:alert] %>
-      <div class="flash--wrapper-alert">
-        <p class="flash--text"><%= flash[:alert] %></p>
+      <div class="flash-message red lighten-2">
+        <i class="material-icons left">close</i>
+
+        <span class="flash--text"><%= flash[:alert] %></span>
       </div>
     <% end %>
 

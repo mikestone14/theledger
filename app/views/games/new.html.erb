@@ -1,22 +1,34 @@
-<h2>Record Game</h2>
+<div class="row">
+  <div class="col s12 section">
+    <h4>Record Game</h4>
+  </div>
+</div>
 
 <%= form_for @game do |f| %>
-  <div>
-    <%= f.label :winner_id, "Winner" %>
-    <%= f.collection_select :winner_id, @users, :id, :name, prompt: true %>
+  <div class="row">
+    <div class="input-field col s6">
+      <%= f.collection_select :winner_id, @users, :id, :name, prompt: true %>
+      <%= f.label :winner_id, "Winner" %>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :loser_id, "Loser" %>
-    <%= f.collection_select :loser_id, @users, :id, :name, prompt: true %>
+  <div class="row">
+    <div class="input-field col s6">
+      <%= f.collection_select :loser_id, @users, :id, :name, prompt: true %>
+      <%= f.label :loser_id, "Loser" %>
+    </div>
   </div>
 
-  <div>
-    <%= label_tag "game[price]", "Game price ($)" %>
-    <%= text_field_tag "game[price]" %>
+  <div class="row">
+    <div class="input-field col s6">
+      <%= label_tag "game[price]", "Game price ($)" %>
+      <%= text_field_tag "game[price]" %>
+    </div>
   </div>
 
-  <div>
-    <%= f.submit "Submit" %>
+  <div class="row">
+    <div class="col s6">
+      <%= f.submit "Submit", class: "waves-effect waves-light btn" %>
+    </div>
   </div>
 <% end %>
