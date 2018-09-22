@@ -46,3 +46,9 @@ $indigo-darken-4: #1a237e;
 .row .input-field .select-dropdown li span {
   color: $indigo-darken-4;
 }
+
+.btn-floating.dashboard__new-game-link {
+  bottom: 35px;
+  position: fixed;
+  right: 35px;
+}

@@ -7,7 +7,7 @@ RSpec.feature "Dashboard feature", type: :feature do
 
       sign_in(user)
       visit dashboard_path
-      click_on "Record game"
+      find(".dashboard__new-game-link").click
 
       expect(page.current_path).to eq(new_game_path)
     end
