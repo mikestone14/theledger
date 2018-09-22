@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.feature "Dashboard feature", type: :feature do
+  before { create(:season, :active) }
+
   context "as an authenticated user" do
     scenario "I can create a game from the dashboard page" do
       user = create(:user, email: "test@example.com", password: "KFBR392")

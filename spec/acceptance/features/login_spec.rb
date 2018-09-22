@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.feature "Login feature", type: :feature do
+  before { create(:season, :active) }
+
   scenario "successful log in" do
     user = create(:user, email: "test@example.com", password: "KFBR392")
 

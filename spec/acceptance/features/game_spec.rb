@@ -1,10 +1,11 @@
 require "rails_helper"
 
 RSpec.feature "Game feature", type: :feature do
+  before { create(:season, :active) }
+
   context "as an authenticated user" do
     context "creating a game" do
       scenario "with valid data" do
-        create(:season, :active)
         user = create(:user, email: "test@example.com", password: "KFBR392")
         loser = create(:user, name: "Loser")
 
@@ -20,7 +21,6 @@ RSpec.feature "Game feature", type: :feature do
       end
 
       scenario "with invalid data" do
-        create(:season, :active)
         user = create(:user, email: "test@example.com", password: "KFBR392")
         loser = create(:user, name: "Loser")
 
