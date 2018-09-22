@@ -13,4 +13,12 @@ describe Game, type: :model do
     it { is_expected.to validate_presence_of(:loser) }
     it { is_expected.to validate_presence_of(:price_in_cents) }
   end
+
+  describe "#price_in_dollars" do
+    it "returns the price in dollars" do
+      game = create(:game, price_in_cents: 1234)
+
+      expect(game.price_in_dollars).to eq(12.34)
+    end
+  end
 end

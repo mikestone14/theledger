@@ -3,12 +3,24 @@ require "rails_helper"
 RSpec.feature "Dashboard feature", type: :feature do
   context "as an authenticated user" do
     scenario "I can view the dashboard page" do
-      user = create(:user, email: "test@example.com", password: "KFBR392")
+      user = create(:user)
       sign_in(user)
 
       visit dashboard_path
 
       expect(page.current_path).to eq(dashboard_path)
+    end
+
+    scenario "I see the last 6 games played" do
+      season = create(:season, :active)
+      loser = create(:user, name: "Paul Revere")
+      user = create(:user)
+      create_list(:game, 8, winner: user, loser: loser, price_in_cents: 1000, season: season)
+
+      sign_in(user)
+      visit dashboard_path
+
+      expect(page).to have_css(".recent-games-table tbody tr", count: 6)
     end
   end
 
