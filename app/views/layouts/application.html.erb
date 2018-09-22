@@ -29,17 +29,21 @@
 
     <% if flash[:notice] %>
       <div class="flash-message indigo accent-2">
-        <i class="material-icons left">check</i>
+        <div class="container">
+          <i class="material-icons left">check</i>
 
-        <span class="flash--text"><%= flash[:notice] %></span>
+          <span class="flash--text"><%= flash[:notice] %></span>
+        </div>
       </div>
     <% end %>
 
     <% if flash[:alert] %>
       <div class="flash-message red lighten-2">
-        <i class="material-icons left">close</i>
+        <div class="container">
+          <i class="material-icons left">info</i>
 
-        <span class="flash--text"><%= flash[:alert] %></span>
+          <span class="flash--text"><%= flash[:alert] %></span>
+        </div>
       </div>
     <% end %>
 
