@@ -24,6 +24,7 @@ class GamesController < ApplicationController
     @games = @season
       .games
       .includes(:winner, :loser)
+      .order(created_at: :desc)
   end
 
   private

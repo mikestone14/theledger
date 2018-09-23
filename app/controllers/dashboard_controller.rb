@@ -7,6 +7,7 @@ class DashboardController < ApplicationController
     @recent_games = @season
       .games
       .includes(:winner, :loser)
+      .order(created_at: :desc)
       .last(6)
   end
 end
