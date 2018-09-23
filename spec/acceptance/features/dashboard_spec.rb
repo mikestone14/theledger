@@ -46,8 +46,9 @@ RSpec.feature "Dashboard feature", type: :feature do
 
       sign_in(user)
       visit dashboard_path
+      click_on("View all games")
 
-      expect(page).to have_link("View all games", active_season_games_path)
+      expect(page.current_path).to eq(active_season_games_path)
     end
 
     scenario "I see the user game counts" do

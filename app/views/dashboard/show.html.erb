@@ -14,7 +14,7 @@
   <%= render partial: "games/table", locals: { games: @recent_games } %>
 
   <% if @season.game_count > @recent_games.count %>
-    <%= link_to "View all games" %>
+    <%= link_to "View all games", active_season_games_path %>
   <% end %>
 </div>
 
