@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get "/dashboard" => "dashboard#show"
 
   resources :games, only: [:new, :create]
+  get "/seasons/active/games", to: "games#index", as: :active_season_games
 end

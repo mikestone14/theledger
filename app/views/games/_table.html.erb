@@ -1,0 +1,19 @@
+<table class="striped s12">
+  <thead>
+    <tr>
+      <th>Winner</th>
+      <th>Loser</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% games.each do |game| %>
+      <tr>
+        <td><%= game.winner.name %></td>
+        <td><%= game.loser.name %></td>
+        <td><%= number_to_currency(game.price_in_dollars) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

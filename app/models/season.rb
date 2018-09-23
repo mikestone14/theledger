@@ -11,6 +11,10 @@ class Season < ApplicationRecord
     active.last
   end
 
+  def game_count
+    games.count
+  end
+
   private
 
   def one_active_season

@@ -10,26 +10,12 @@
   </div>
 </div>
 
-<div class="row">
-  <table class="striped recent-games-table">
-    <thead>
-      <tr>
-        <th>Winner</th>
-        <th>Loser</th>
-        <th>Amount</th>
-      </tr>
-    </thead>
+<div class="row recent-games-table">
+  <%= render partial: "games/table", locals: { games: @recent_games } %>
 
-    <tbody>
-      <% @recent_games.each do |recent_game| %>
-        <tr>
-          <td><%= recent_game.winner.name %></td>
-          <td><%= recent_game.loser.name %></td>
-          <td><%= number_to_currency(recent_game.price_in_dollars) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <% if @season.game_count > @recent_games.count %>
+    <%= link_to "View all games" %>
+  <% end %>
 </div>
 
 <div class="row">

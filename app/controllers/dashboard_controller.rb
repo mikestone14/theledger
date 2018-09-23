@@ -3,7 +3,8 @@ class DashboardController < ApplicationController
 
   def show
     @users = User.all
-    @recent_games = Season.active_season
+    @season = Season.active_season
+    @recent_games = @season
       .games
       .includes(:winner, :loser)
       .last(6)

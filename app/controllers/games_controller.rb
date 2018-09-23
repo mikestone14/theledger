@@ -19,6 +19,13 @@ class GamesController < ApplicationController
     end
   end
 
+  def index
+    @season = Season.active_season
+    @games = @season
+      .games
+      .includes(:winner, :loser)
+  end
+
   private
 
   def create_game_params

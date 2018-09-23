@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col s12 section">
+    <h4><%= @season.name %> Season</h4>
+  </div>
+</div>
+
+<div class="row active-season-games-table">
+  <%= render partial: "table", locals: { games: @games } %>
+</div>

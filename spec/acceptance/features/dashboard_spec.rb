@@ -18,7 +18,7 @@ RSpec.feature "Dashboard feature", type: :feature do
       user = create(:user)
       create_list(
         :game,
-        8,
+        6,
         winner: user,
         loser: loser,
         price_in_cents: 1000,
@@ -29,6 +29,25 @@ RSpec.feature "Dashboard feature", type: :feature do
       visit dashboard_path
 
       expect(page).to have_css(".recent-games-table tbody tr", count: 6)
+      expect(page).not_to have_link("View all games")
+    end
+
+    scenario "I see a link to view all games if there are more than 6 games" do
+      loser = create(:user, name: "Paul Revere")
+      user = create(:user)
+      create_list(
+        :game,
+        8,
+        winner: user,
+        loser: loser,
+        price_in_cents: 1000,
+        season: Season.active_season,
+      )
+
+      sign_in(user)
+      visit dashboard_path
+
+      expect(page).to have_link("View all games", active_season_games_path)
     end
 
     scenario "I see the user game counts" do
