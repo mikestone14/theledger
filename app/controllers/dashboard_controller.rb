@@ -8,6 +8,6 @@ class DashboardController < ApplicationController
       .games
       .includes(:winner, :loser)
       .order(created_at: :desc)
-      .last(6)
+      .first(6)
   end
 end
