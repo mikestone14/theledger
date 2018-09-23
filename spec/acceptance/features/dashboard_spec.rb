@@ -16,7 +16,14 @@ RSpec.feature "Dashboard feature", type: :feature do
     scenario "I see the last 6 games played" do
       loser = create(:user, name: "Paul Revere")
       user = create(:user)
-      create_list(:game, 8, winner: user, loser: loser, price_in_cents: 1000, season: Season.active_season)
+      create_list(
+        :game,
+        8,
+        winner: user,
+        loser: loser,
+        price_in_cents: 1000,
+        season: Season.active_season,
+      )
 
       sign_in(user)
       visit dashboard_path
@@ -27,7 +34,14 @@ RSpec.feature "Dashboard feature", type: :feature do
     scenario "I see the user game counts" do
       loser = create(:user, name: "Paul Revere")
       user = create(:user, name: "Jerry Garcia")
-      create_list(:game, 8, winner: user, loser: loser, price_in_cents: 1000, season: Season.active_season)
+      create_list(
+        :game,
+        8,
+        winner: user,
+        loser: loser,
+        price_in_cents: 1000,
+        season: Season.active_season,
+      )
       create(:game, winner: user, price_in_cents: 1000, season: Season.active_season)
 
       sign_in(user)

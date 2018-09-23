@@ -38,9 +38,9 @@ RSpec.feature "Game feature", type: :feature do
 
   context "as an unauthenticated user" do
     scenario "I am redirected to the login page" do
-        visit new_game_path
+      visit new_game_path
 
-        expect(page.current_path).to eq(login_path)
+      expect(page.current_path).to eq(login_path)
     end
   end
 end

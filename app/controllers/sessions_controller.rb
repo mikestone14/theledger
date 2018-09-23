@@ -1,13 +1,12 @@
 class SessionsController < ApplicationController
   before_action :redirect_if_authenticated, only: [:new]
 
-  def new
-  end
+  def new; end
 
   def create
     user = User.where("lower(email) = ?", lower_email).first
 
-    if user && user.authenticate(login_params.fetch(:password))
+    if user&.authenticate(login_params.fetch(:password))
       session[:user_id] = user.id
       redirect_to dashboard_path
     else

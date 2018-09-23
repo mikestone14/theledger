@@ -22,11 +22,11 @@ class GamesController < ApplicationController
   private
 
   def create_game_params
-    game_params.
-      except(:price).
-      merge(
+    game_params
+      .except(:price)
+      .merge(
         price_in_cents: price_in_cents,
-        season: Season.active_season
+        season: Season.active_season,
       )
   end
 
@@ -36,9 +36,8 @@ class GamesController < ApplicationController
 
   def price_in_cents
     price = game_params.fetch(:price)
+    return if price.blank?
 
-    if price.present?
-      (price.to_f * 100).to_i
-    end
+    (price.to_f * 100).to_i
   end
 end

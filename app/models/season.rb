@@ -1,5 +1,5 @@
 class Season < ApplicationRecord
-  has_many :games
+  has_many :games, dependent: :destroy
 
   validate :one_active_season
   validates :name, presence: true
@@ -14,8 +14,8 @@ class Season < ApplicationRecord
   private
 
   def one_active_season
-    if active? && Season.active.exists?
-      errors.add(:status, "can only be active in one season")
-    end
+    return unless active? && Season.active.exists?
+
+    errors.add(:status, "can only be active in one season")
   end
 end

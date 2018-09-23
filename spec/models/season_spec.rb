@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe Season, type: :model do
   describe "associations" do
@@ -19,7 +19,7 @@ describe Season, type: :model do
 
       expect(active_season).not_to be_valid
       expect(active_season.errors).to contain_exactly(
-        "Status can only be active in one season"
+        "Status can only be active in one season",
       )
     end
   end
