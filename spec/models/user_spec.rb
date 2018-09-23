@@ -28,4 +28,15 @@ describe User, type: :model do
       expect(user.active_season_game_count).to eq(4)
     end
   end
+
+  describe "#game_count" do
+    it "returns the number of game either won or lost" do
+      season = create(:season, :active)
+      user = create(:user)
+      create_list(:game, 2, season: season, winner: user)
+      create(:game, season: season, loser: user)
+
+      expect(user.game_count).to eq(3)
+    end
+  end
 end

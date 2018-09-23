@@ -12,4 +12,8 @@ class User < ApplicationRecord
       where("winner_id = :winner_id OR loser_id = :loser_id", winner_id: id, loser_id: id).
       count
   end
+
+  def game_count
+    Game.current_season.where("winner_id = ? OR loser_id = ?", id, id).count
+  end
 end
