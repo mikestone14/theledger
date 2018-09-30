@@ -22,7 +22,7 @@
   <div class="row">
     <div class="input-field col s12 l6">
       <%= label_tag "game[price]", "Game price ($)" %>
-      <%= number_field_tag "game[price]" %>
+      <%= number_field_tag "game[price]", nil, min: 0.5, step: 0.5 %>
     </div>
   </div>
 

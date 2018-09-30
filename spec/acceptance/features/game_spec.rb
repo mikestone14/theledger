@@ -20,6 +20,21 @@ RSpec.feature "Game feature", type: :feature do
         expect(page.current_path).to eq(dashboard_path)
       end
 
+      scenario "I can play a $0.50 game" do
+        user = create(:user, email: "test@example.com", password: "KFBR392")
+        loser = create(:user, name: "Loser")
+
+        sign_in(user)
+        visit new_game_path
+        select user.name, from: "Winner"
+        select loser.name, from: "Loser"
+        fill_in "Game price ($)", with: 0.5
+        click_on "Submit"
+
+        expect(page).to have_content("Game recorded.")
+        expect(page.current_path).to eq(dashboard_path)
+      end
+
       scenario "with invalid data" do
         user = create(:user, email: "test@example.com", password: "KFBR392")
         loser = create(:user, name: "Loser")
