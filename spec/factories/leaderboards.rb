@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :leaderboard do
-    season { nil }
+    season
     name { "Leaderboard" }
   end
 end

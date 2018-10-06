@@ -35,6 +35,7 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   config.include FeatureHelper, type: :feature
+  config.include ActiveSupport::Testing::TimeHelpers
 
   if Bullet.enable?
     config.before(:each) do
