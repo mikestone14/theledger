@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col s12 section">
+    <h4><%= @season.name %> Season Leaderboards</h4>
+  </div>
+</div>
+
+<div class="row">
+  <ul class="leaderboards__list">
+    <% @leaderboards.each do |leaderboard| %>
+      <li><%= link_to leaderboard.name, leaderboard_path(leaderboard) %></li>
+    <% end %>
+  </ul>
+</div>

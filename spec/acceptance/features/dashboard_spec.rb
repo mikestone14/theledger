@@ -72,6 +72,15 @@ RSpec.feature "Dashboard feature", type: :feature do
       expect(page).to have_css(".player-game-count-table tbody tr", count: 3)
       expect(user_td.sibling("td").text).to eq("9")
     end
+
+    scenario "I see a link to view the current season's leaderboards" do
+      user = create(:user)
+      sign_in(user)
+      visit dashboard_path
+      click_on("View current season's leaderboards")
+
+      expect(page.current_path).to eq(active_season_leaderboards_path)
+    end
   end
 
   context "as an unauthenticated user" do

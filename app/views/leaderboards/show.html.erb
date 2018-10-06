@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col s12 section">
+    <h4><%= @leaderboard.name %></h4>
+  </div>
+</div>
+
+<div class="row leaderboard__table-wrapper">
+  <%= render partial: "table", locals: { records: @records } %>
+</div>

@@ -8,5 +8,8 @@ Rails.application.routes.draw do
   get "/dashboard" => "dashboard#show"
 
   resources :games, only: [:new, :create]
+  resources :leaderboards, only: [:show]
+
   get "/seasons/active/games", to: "games#index", as: :active_season_games
+  get "/seasons/active/leaderboards", to: "leaderboards#index", as: :active_season_leaderboards
 end

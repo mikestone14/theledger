@@ -1,0 +1,23 @@
+<table class="striped s12">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Wins</th>
+      <th>Losses</th>
+      <th>Average</th>
+      <th>Net</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% records.each do |record| %>
+      <tr>
+        <td><%= record.user.name %></td>
+        <td><%= record.win_count %></td>
+        <td><%= record.loss_count %></td>
+        <td><%= record.win_average %></td>
+        <td><%= number_to_currency(record.net_in_dollars) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

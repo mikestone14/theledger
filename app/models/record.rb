@@ -20,4 +20,20 @@ class Record < ApplicationRecord
       net_in_cents: net_in_cents,
     )
   end
+
+  def self.by_win_average
+    order("records.win_count / (records.win_count + records.loss_count) desc")
+  end
+
+  def win_average
+    (win_count.to_f / games_played).round(3)
+  end
+
+  def net_in_dollars
+    (net_in_cents.to_f / 100).round(2)
+  end
+
+  def games_played
+    win_count + loss_count
+  end
 end
