@@ -2,18 +2,20 @@ class LeaderboardService
   TIME_ZONE = "America/New_York".freeze
   TIME_FORMAT = "%m/%d/%y @ %I:%M%p EST".freeze
 
-  def self.run(name: nil, season:)
-    new(name, season).run
+  def self.run(name: nil, season:, send_email: true)
+    new(name, season, send_email).run
   end
 
-  def initialize(name, season)
+  def initialize(name, season, send_email)
     @name = name
     @season = season
+    @send_email = send_email
   end
 
   def run
     create_leaderboard
     create_records
+    send_email
   end
 
   private
@@ -34,5 +36,9 @@ class LeaderboardService
 
   def formatted_current_time
     Time.now.in_time_zone(TIME_ZONE).strftime(TIME_FORMAT)
+  end
+
+  def send_email
+    LeaderboardMailer.leaderboard_created(@leaderboard).deliver_now if @send_email
   end
 end

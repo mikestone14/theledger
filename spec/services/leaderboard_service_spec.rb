@@ -55,6 +55,20 @@ describe LeaderboardService do
         )
       end
     end
+
+    it "sends a leaderboard created email when send_email is true" do
+      setup_data
+
+      expect { LeaderboardService.run(season: @season, send_email: true) }
+        .to change { ActionMailer::Base.deliveries.count }.from(0).to(1)
+    end
+
+    it "does not send a leaderboard created email when send_email is false" do
+      setup_data
+
+      expect { LeaderboardService.run(season: @season, send_email: false) }
+        .not_to change { ActionMailer::Base.deliveries.count }
+    end
   end
 
   def setup_data

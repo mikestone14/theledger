@@ -36,6 +36,7 @@ end
 RSpec.configure do |config|
   config.include FeatureHelper, type: :feature
   config.include ActiveSupport::Testing::TimeHelpers
+  config.before { ActionMailer::Base.deliveries.clear }
 
   if Bullet.enable?
     config.before(:each) do
