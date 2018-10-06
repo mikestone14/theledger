@@ -43,10 +43,10 @@ describe LeaderboardService do
     it "sets a default leaderboard name" do
       setup_data
       current_time = Time
-        .new(2017, 12, 24, 13, 30, 10)
-        .in_time_zone("America/New_York")
+        .zone
+        .local(2017, 12, 24, 13, 30, 10)
 
-      travel_to current_time do
+      travel_to(current_time) do
         LeaderboardService.run(season: @season)
         leaderboard = Leaderboard.last
 
