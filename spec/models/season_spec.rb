@@ -3,6 +3,7 @@ require "rails_helper"
 describe Season, type: :model do
   describe "associations" do
     it { is_expected.to have_many(:games) }
+    it { is_expected.to have_one(:leaderboard) }
   end
 
   describe "validations" do

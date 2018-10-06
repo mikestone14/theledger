@@ -1,5 +1,6 @@
 class Season < ApplicationRecord
   has_many :games, dependent: :destroy
+  has_many :leaderboards, dependent: :destroy
 
   validate :one_active_season
   validates :name, presence: true

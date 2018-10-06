@@ -1,11 +1,12 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe Leaderboard, type: :model do
   describe "associations" do
-    it { should belong_to(:season) }
+    it { is_expected.to belong_to(:season) }
+    it { is_expected.to have_many(:records) }
   end
 
   describe "validations" do
-    it { should validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:name) }
   end
 end
