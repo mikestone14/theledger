@@ -22,7 +22,7 @@ class Record < ApplicationRecord
   end
 
   def self.by_win_average
-    order("records.win_count / (records.win_count + records.loss_count) desc")
+    order("(records.win_count::float / (records.win_count + records.loss_count)) desc")
   end
 
   def win_average

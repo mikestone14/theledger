@@ -14,14 +14,22 @@ describe Record, type: :model do
 
   describe ".by_win_average" do
     it "returns the records ordered by win average in descending order" do
-      first_record = create(:record, win_count: 3, loss_count: 1)
-      second_record = create(:record, win_count: 25, loss_count: 25)
-      last_record = create(:record, win_count: 2, loss_count: 3)
+      mike = create(:record, win_count: 21, loss_count: 12)
+      bone = create(:record, win_count: 6, loss_count: 4)
+      chris = create(:record, win_count: 8, loss_count: 9)
+      jessi = create(:record, win_count: 2, loss_count: 7)
+      gia = create(:record, win_count: 6, loss_count: 11)
+      jeff = create(:record, win_count: 8, loss_count: 2)
+      matt = create(:record, win_count: 5, loss_count: 11)
 
       expect(Record.by_win_average).to eq([
-        first_record,
-        second_record,
-        last_record,
+        jeff,
+        mike,
+        bone,
+        chris,
+        gia,
+        matt,
+        jessi,
       ])
     end
   end
