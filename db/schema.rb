@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180919004338) do
+ActiveRecord::Schema.define(version: 20181006162309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 20180919004338) do
     t.index ["loser_id"], name: "index_games_on_loser_id"
     t.index ["season_id"], name: "index_games_on_season_id"
     t.index ["winner_id"], name: "index_games_on_winner_id"
+  end
+
+  create_table "leaderboards", force: :cascade do |t|
+    t.bigint "season_id"
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["season_id"], name: "index_leaderboards_on_season_id"
   end
 
   create_table "seasons", force: :cascade do |t|
@@ -47,4 +55,5 @@ ActiveRecord::Schema.define(version: 20180919004338) do
   add_foreign_key "games", "seasons"
   add_foreign_key "games", "users", column: "loser_id"
   add_foreign_key "games", "users", column: "winner_id"
+  add_foreign_key "leaderboards", "seasons"
 end
