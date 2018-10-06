@@ -15,7 +15,7 @@
         <td><%= record.user.name %></td>
         <td><%= record.win_count %></td>
         <td><%= record.loss_count %></td>
-        <td><%= record.win_average %></td>
+        <td><%= formatted_win_average(record.win_average) %></td>
         <td><%= number_to_currency(record.net_in_dollars) %></td>
       </tr>
     <% end %>
