@@ -3,7 +3,7 @@ class LeaderboardsController < ApplicationController
 
   def index
     @season = Season.active_season
-    @leaderboards = @season.leaderboards
+    @leaderboards = @season.leaderboards.order(created_at: :desc)
   end
 
   def show
