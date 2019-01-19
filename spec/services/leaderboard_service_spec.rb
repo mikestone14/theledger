@@ -56,6 +56,16 @@ describe LeaderboardService do
       end
     end
 
+    it "uses the active season by default" do
+      setup_data
+      LeaderboardService.run
+      leaderboard = Leaderboard.last
+
+      expect(leaderboard).to have_attributes(
+        season: @season,
+      )
+    end
+
     it "sends a leaderboard created email when send_email is true" do
       setup_data
 
@@ -75,7 +85,7 @@ describe LeaderboardService do
     @mike = create(:user, name: "Mike")
     @chris = create(:user, name: "Chris")
     @jessi = create(:user, name: "Jessi")
-    @season = create(:season)
+    @season = create(:season, :active)
 
     create_list(
       :game,

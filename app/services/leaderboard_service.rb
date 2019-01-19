@@ -2,7 +2,7 @@ class LeaderboardService
   TIME_ZONE = "America/New_York".freeze
   TIME_FORMAT = "%m/%d/%y @ %I:%M%p EST".freeze
 
-  def self.run(name: nil, season:, send_email: true)
+  def self.run(name: nil, season: Season.active_season, send_email: true)
     new(name, season, send_email).run
   end
 
