@@ -7,13 +7,15 @@
 <div class="row">
   <ul class="collection">
     <% @seasons.each do |season| %>
-      <li class="collection-item">
+      <li class="collection-item" id="season-<%= season.id %>">
         <div>
-          <%= link_to season_leaderboards_path(season) do %>
-            <%= season.name %>
+          <%= link_to season.name, season_leaderboards_path(season) %>
 
-            <% if season.active? %>
-              <span class="new badge" data-badge-caption="active"></span>
+          <% if season.active? %>
+            <span class="new badge" data-badge-caption="active"></span>
+          <% else %>
+            <%= form_tag activate_season_path(season), method: :patch do %>
+              <%= submit_tag "activate", class: "btn blue btn-small" %>
             <% end %>
           <% end %>
         </div>

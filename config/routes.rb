@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :games, only: [:new, :create]
   resources :leaderboards, only: [:show, :create]
+  resources :activate_season, only: [:update]
 
   resources :seasons, only: [:index] do
     resources :leaderboards, only: [:index, :show]
