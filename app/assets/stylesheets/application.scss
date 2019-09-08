@@ -52,3 +52,8 @@ $indigo-darken-4: #1a237e;
   position: fixed;
   right: 35px;
 }
+
+.season__item-content {
+  display: flex;
+  justify-content: space-between;
+}
