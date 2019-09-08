@@ -12,6 +12,13 @@ class Season < ApplicationRecord
     active.last
   end
 
+  def activate!
+    Season.transaction do
+      Season.active_season.inactive!
+      active!
+    end
+  end
+
   def game_count
     games.count
   end

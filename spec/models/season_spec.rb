@@ -34,4 +34,16 @@ describe Season, type: :model do
       expect(Season.active_season).to eq(active_season)
     end
   end
+
+  describe "#activate!" do
+    it "de-activates the existing active season" do
+      active_season = create(:season, :active)
+      inactive_season = create(:season, :inactive)
+
+      inactive_season.activate!
+
+      expect(active_season.reload).to be_inactive
+      expect(inactive_season.reload).to be_active
+    end
+  end
 end
