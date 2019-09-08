@@ -17,6 +17,14 @@ RSpec.feature "Leaderboard feature", type: :feature do
       end
     end
 
+    scenario "when I click 'Create Leaderboard' a new leaderboard is created" do
+      admin = create(:user, :admin)
+      sign_in(admin)
+      visit active_season_leaderboards_path
+
+      expect { click_on("Create Leaderboard") }.to change { Leaderboard.count }.from(0).to(1)
+    end
+
     scenario "when I click on a leaderboard I can view that leaderboard" do
       user = create(:user)
       leaderboard = create(:leaderboard, name: "Leaderboard 1", season: Season.active_season)

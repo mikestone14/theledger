@@ -4,6 +4,12 @@
   </div>
 </div>
 
+<% if current_user.admin? %>
+  <%= form_tag(leaderboards_path, method: :post) do %>
+    <%= submit_tag "Create Leaderboard", class: "btn btn-primary" %>
+  <% end %>
+<% end %>
+
 <div class="row">
   <ul class="leaderboards__list">
     <% @leaderboards.each do |leaderboard| %>

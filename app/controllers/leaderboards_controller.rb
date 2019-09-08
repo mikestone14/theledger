@@ -10,4 +10,12 @@ class LeaderboardsController < ApplicationController
     @leaderboard = Leaderboard.find(params[:id])
     @records = @leaderboard.records.by_win_average
   end
+
+  def create
+    if current_user.admin?
+      LeaderboardService.run
+    end
+
+    redirect_to active_season_leaderboards_path
+  end
 end
