@@ -2,7 +2,7 @@ class LeaderboardsController < ApplicationController
   before_action :authorize
 
   def index
-    @season = Season.active_season
+    @season = season
     @leaderboards = @season.leaderboards.order(created_at: :desc)
   end
 
@@ -16,6 +16,16 @@ class LeaderboardsController < ApplicationController
       LeaderboardService.run
     end
 
-    redirect_to active_season_leaderboards_path
+    redirect_to season_leaderboards_path(Season.active_season)
+  end
+
+  private
+
+  def season
+    if params[:season_id]
+      Season.find(params[:season_id])
+    else
+      Season.active_season
+    end
   end
 end

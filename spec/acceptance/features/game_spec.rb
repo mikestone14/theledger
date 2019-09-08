@@ -73,7 +73,7 @@ RSpec.feature "Game feature", type: :feature do
         )
 
         sign_in(user)
-        visit active_season_games_path
+        visit season_games_path(Season.active_season)
 
         expect(page).to have_css(".active-season-games-table tbody tr", count: 6)
       end

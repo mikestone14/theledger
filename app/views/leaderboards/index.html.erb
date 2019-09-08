@@ -4,16 +4,16 @@
   </div>
 </div>
 
-<% if current_user.admin? %>
+<% if current_user.admin? && @season.active? %>
   <%= form_tag(leaderboards_path, method: :post) do %>
     <%= submit_tag "Create Leaderboard", class: "btn btn-primary" %>
   <% end %>
 <% end %>
 
 <div class="row">
-  <ul class="leaderboards__list">
+  <ul class="collection leaderboards__list">
     <% @leaderboards.each do |leaderboard| %>
-      <li><%= link_to leaderboard.name, leaderboard_path(leaderboard) %></li>
+      <li class="collection-item"><%= link_to leaderboard.name, leaderboard_path(leaderboard) %></li>
     <% end %>
   </ul>
 </div>

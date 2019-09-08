@@ -48,7 +48,7 @@ RSpec.feature "Dashboard feature", type: :feature do
       visit dashboard_path
       click_on("View all games")
 
-      expect(page.current_path).to eq(active_season_games_path)
+      expect(page.current_path).to eq(season_games_path(Season.active_season))
     end
 
     scenario "I see the user game counts" do
@@ -79,7 +79,7 @@ RSpec.feature "Dashboard feature", type: :feature do
       visit dashboard_path
       click_on("View current season's leaderboards")
 
-      expect(page.current_path).to eq(active_season_leaderboards_path)
+      expect(page.current_path).to eq(season_leaderboards_path(Season.active_season))
     end
   end
 

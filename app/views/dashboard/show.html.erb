@@ -5,7 +5,11 @@
 </div>
 
 <div class="row">
-  <%= link_to "View current season's leaderboards", active_season_leaderboards_path %>
+  <%= link_to "View current season's leaderboards", season_leaderboards_path(@season) %>
+</div>
+
+<div class="row">
+  <%= link_to "View seasons", seasons_path %>
 </div>
 
 <div class="row">
@@ -18,7 +22,7 @@
   <%= render partial: "games/table", locals: { games: @recent_games } %>
 
   <% if @season.game_count > @recent_games.count %>
-    <%= link_to "View all games", active_season_games_path %>
+    <%= link_to "View all games", season_games_path(@season) %>
   <% end %>
 </div>
 

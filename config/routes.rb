@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :games, only: [:new, :create]
   resources :leaderboards, only: [:show, :create]
 
-  get "/seasons/active/games", to: "games#index", as: :active_season_games
-  get "/seasons/active/leaderboards", to: "leaderboards#index", as: :active_season_leaderboards
+  resources :seasons, only: [:index] do
+    resources :leaderboards, only: [:index, :show]
+    resources :games, only: [:index]
+  end
 end

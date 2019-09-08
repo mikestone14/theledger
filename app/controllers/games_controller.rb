@@ -20,7 +20,7 @@ class GamesController < ApplicationController
   end
 
   def index
-    @season = Season.active_season
+    @season = Season.find(params[:season_id])
     @games = @season
       .games
       .includes(:winner, :loser)
