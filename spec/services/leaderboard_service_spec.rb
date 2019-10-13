@@ -99,6 +99,16 @@ describe LeaderboardService do
     create_list(
       :game,
       2,
+      :nullified,
+      winner: @mike,
+      loser: @chris,
+      price_in_cents: 1050,
+      season: @season,
+    )
+
+    create_list(
+      :game,
+      2,
       winner: @chris,
       loser: @jessi,
       price_in_cents: 900,

@@ -7,5 +7,13 @@ FactoryBot.define do
     trait :admin do
       admin { true }
     end
+
+    trait :active do
+      status { 0 }
+    end
+
+    trait :inactive do
+      status { 1 }
+    end
   end
 end

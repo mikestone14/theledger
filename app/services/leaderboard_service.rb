@@ -25,7 +25,7 @@ class LeaderboardService
   end
 
   def create_records
-    User.all.map do |user|
+    User.active.each do |user|
       Record.create_for_user_and_leaderboard(user, @leaderboard)
     end
   end

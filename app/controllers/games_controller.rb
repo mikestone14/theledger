@@ -3,7 +3,7 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
-    @users = User.all
+    @users = User.active
   end
 
   def create

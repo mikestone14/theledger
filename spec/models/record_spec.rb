@@ -35,11 +35,13 @@ describe Record, type: :model do
   end
 
   describe ".create_for_user_and_leaderboard" do
-    it "creates a record with the expected attributes" do
+    it "creates a record with the expected attributes, not including nullified games" do
       leaderboard = create(:leaderboard)
       user = create(:user)
       create_list(:game, 2, season: leaderboard.season, winner: user, price_in_cents: 100)
+      create_list(:game, 2, :nullified, season: leaderboard.season, winner: user, price_in_cents: 100)
       create_list(:game, 1, season: leaderboard.season, loser: user, price_in_cents: 75)
+      create_list(:game, 1, :nullified, season: leaderboard.season, loser: user, price_in_cents: 75)
 
       record = Record.create_for_user_and_leaderboard(user, leaderboard)
 

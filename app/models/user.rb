@@ -14,6 +14,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true
 
+  enum status: { active: 0, inactive: 1 }
+
   def active_season_game_count
     Game
       .where(season: Season.active_season)

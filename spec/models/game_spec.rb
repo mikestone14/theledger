@@ -1,6 +1,8 @@
 require "rails_helper"
 
 describe Game, type: :model do
+  it { is_expected.to define_enum_for(:status).with_values([:active, :nullified]) }
+
   describe "associations" do
     it { is_expected.to belong_to(:season) }
     it { is_expected.to belong_to(:winner).class_name(:User) }

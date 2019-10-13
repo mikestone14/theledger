@@ -8,6 +8,8 @@ class Game < ApplicationRecord
   validates :loser, presence: true
   validates :price_in_cents, presence: true
 
+  enum status: { active: 0, nullified: 1 }
+
   scope :current_season, -> { where(season: Season.active_season) }
 
   def price_in_dollars

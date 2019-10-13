@@ -11,7 +11,7 @@ describe Season, type: :model do
     it { is_expected.to validate_presence_of(:status) }
 
     it do
-      is_expected.to define_enum_for(:status).with([:active, :inactive])
+      is_expected.to define_enum_for(:status).with_values([:active, :inactive])
     end
 
     it "is not valid with more than 1 active season" do

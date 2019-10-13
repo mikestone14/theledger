@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_19_140259) do
+ActiveRecord::Schema.define(version: 2019_10_13_152618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2019_01_19_140259) do
     t.integer "price_in_cents", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0, null: false
     t.index ["loser_id"], name: "index_games_on_loser_id"
     t.index ["season_id"], name: "index_games_on_season_id"
     t.index ["winner_id"], name: "index_games_on_winner_id"
@@ -62,6 +63,7 @@ ActiveRecord::Schema.define(version: 2019_01_19_140259) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false, null: false
+    t.integer "status", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

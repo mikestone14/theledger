@@ -1,6 +1,8 @@
 require "rails_helper"
 
 describe User, type: :model do
+  it { is_expected.to define_enum_for(:status).with_values([:active, :inactive]) }
+
   describe "associations" do
     it { is_expected.to have_many(:winning_games) }
     it { is_expected.to have_many(:losing_games) }

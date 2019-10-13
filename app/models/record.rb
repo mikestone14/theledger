@@ -8,8 +8,8 @@ class Record < ApplicationRecord
 
   def self.create_for_user_and_leaderboard(user, leaderboard)
     season = leaderboard.season
-    games_won = Game.where(season: season, winner: user)
-    games_lost = Game.where(season: season, loser: user)
+    games_won = Game.active.where(season: season, winner: user)
+    games_lost = Game.active.where(season: season, loser: user)
     net_in_cents = games_won.sum(:price_in_cents) - games_lost.sum(:price_in_cents)
 
     create!(
