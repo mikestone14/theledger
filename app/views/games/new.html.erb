@@ -6,14 +6,14 @@
 
 <%= form_for @game do |f| %>
   <div class="row">
-    <div class="input-field">
+    <div>
       <%= f.collection_select :winner_id, @users, :id, :name, prompt: true %>
       <%= f.label :winner_id, "Winner" %>
     </div>
   </div>
 
   <div class="row">
-    <div class="input-field">
+    <div>
       <%= f.collection_select :loser_id, @users, :id, :name, prompt: true %>
       <%= f.label :loser_id, "Loser" %>
     </div>
