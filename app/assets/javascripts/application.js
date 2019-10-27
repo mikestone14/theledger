@@ -18,5 +18,6 @@
 // Initialize material css select inputs
 document.addEventListener('turbolinks:load', function() {
   var elems = document.querySelectorAll('select');
-  var instances = M.FormSelect.init(elems, {});
+  var options = document.querySelectorAll('option');
+  var instances = M.FormSelect.init(elems, options);
 });
