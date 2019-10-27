@@ -7,15 +7,15 @@
 <%= form_for @game do |f| %>
   <div class="row">
     <div>
-      <%= f.collection_select :winner_id, @users, :id, :name, prompt: true %>
       <%= f.label :winner_id, "Winner" %>
+      <%= f.collection_select :winner_id, @users, :id, :name, prompt: true %>
     </div>
   </div>
 
   <div class="row">
     <div>
-      <%= f.collection_select :loser_id, @users, :id, :name, prompt: true %>
       <%= f.label :loser_id, "Loser" %>
+      <%= f.collection_select :loser_id, @users, :id, :name, prompt: true %>
     </div>
   </div>
 
