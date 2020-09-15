@@ -12,6 +12,26 @@ describe Record, type: :model do
     it { is_expected.to validate_presence_of(:net_in_cents) }
   end
 
+  describe ".eligible" do
+    it "returns records with >= 25 games played" do
+      eligible_game1 = create(:record, win_count: 24, loss_count: 1)
+      create(:record, win_count: 24, loss_count: 0)
+      eligible_game2 = create(:record, win_count: 25, loss_count: 0)
+
+      expect(Record.eligible).to contain_exactly(eligible_game1, eligible_game2)
+    end
+  end
+
+  describe ".ineligible" do
+    it "returns records with < 25 games played" do
+      create(:record, win_count: 24, loss_count: 1)
+      ineligible_game = create(:record, win_count: 24, loss_count: 0)
+      create(:record, win_count: 25, loss_count: 0)
+
+      expect(Record.ineligible).to contain_exactly(ineligible_game)
+    end
+  end
+
   describe ".by_score_and_win_average" do
     it "returns the records ordered by win average in descending order" do
       mike = create(:record, win_count: 21, loss_count: 12, score: 10)

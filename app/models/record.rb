@@ -6,6 +6,16 @@ class Record < ApplicationRecord
   validates :loss_count, presence: true
   validates :net_in_cents, presence: true
 
+  MIN_GAME_COUNT = 25
+
+  def self.eligible
+    where("win_count + loss_count >= ?", MIN_GAME_COUNT)
+  end
+
+  def self.ineligible
+    where("win_count + loss_count < ?", MIN_GAME_COUNT)
+  end
+
   def self.create_for_user_and_leaderboard(user, leaderboard)
     season = leaderboard.season
     games_won = Game.active.where(season: season, winner: user)

@@ -38,17 +38,29 @@ RSpec.feature "Leaderboard feature", type: :feature do
 
     scenario "viewing a leaderboard" do
       user = create(:user)
+      ineligible_user = create(:user)
       leaderboard = create(
         :leaderboard,
         name: "Leaderboard 1",
         season: Season.active_season,
       )
-      create(:record, leaderboard: leaderboard, user: user)
+      create(:record, leaderboard: leaderboard, user: user, win_count: 25)
+      create(
+        :record,
+        leaderboard: leaderboard,
+        user: ineligible_user,
+        win_count: 10,
+        loss_count: 10,
+      )
       sign_in(user)
       visit leaderboard_path(leaderboard)
 
-      within(".leaderboard__table-wrapper") do
+      within(".leaderboard__table-wrapper--eligible") do
         expect(page).to have_content(user.name)
+      end
+
+      within(".leaderboard__table-wrapper--ineligible") do
+        expect(page).to have_content(ineligible_user.name)
       end
     end
   end

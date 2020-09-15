@@ -4,6 +4,14 @@
   </div>
 </div>
 
-<div class="row leaderboard__table-wrapper">
-  <%= render partial: "table", locals: { records: @records } %>
+<div class="row leaderboard__table-wrapper--eligible">
+  <h5>Eligible Players</h5>
+
+  <%= render partial: "table", locals: { records: @records.eligible } %>
+</div>
+
+<div class="row leaderboard__table-wrapper--ineligible">
+  <h5>Ineligible Players</h5>
+
+  <%= render partial: "table", locals: { records: @records.ineligible } %>
 </div>
