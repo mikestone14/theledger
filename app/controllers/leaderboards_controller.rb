@@ -8,7 +8,7 @@ class LeaderboardsController < ApplicationController
 
   def show
     @leaderboard = Leaderboard.find(params[:id])
-    @records = @leaderboard.records.by_win_average
+    @records = @leaderboard.records.by_score_and_win_average
   end
 
   def create

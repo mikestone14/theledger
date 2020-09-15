@@ -11,18 +11,26 @@ class Record < ApplicationRecord
     games_won = Game.active.where(season: season, winner: user)
     games_lost = Game.active.where(season: season, loser: user)
     net_in_cents = games_won.sum(:price_in_cents) - games_lost.sum(:price_in_cents)
+    win_count = games_won.count
+    loss_count = games_lost.count
+    score = CalculateRecordScore.call(
+      win_count: win_count,
+      loss_count: loss_count,
+      net_in_cents: net_in_cents,
+    )
 
     create!(
       leaderboard: leaderboard,
       user: user,
-      win_count: games_won.count,
-      loss_count: games_lost.count,
+      win_count: win_count,
+      loss_count: loss_count,
       net_in_cents: net_in_cents,
+      score: score,
     )
   end
 
-  def self.by_win_average
-    order(Arel.sql("(records.win_count::float / (records.win_count + records.loss_count)) desc"))
+  def self.by_score_and_win_average
+    order(Arel.sql("score DESC, (records.win_count::float / (records.win_count + records.loss_count)) desc"))
   end
 
   def win_average

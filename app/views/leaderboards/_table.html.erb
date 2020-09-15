@@ -6,6 +6,7 @@
       <th>Losses</th>
       <th>Average</th>
       <th>Net</th>
+      <th>Score</th>
     </tr>
   </thead>
 
@@ -17,6 +18,7 @@
         <td><%= record.loss_count %></td>
         <td><%= formatted_win_average(record.win_average) %></td>
         <td><%= number_to_currency(record.net_in_dollars) %></td>
+        <td><%= record.score %></td>
       </tr>
     <% end %>
   </tbody>

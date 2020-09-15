@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_13_152618) do
+ActiveRecord::Schema.define(version: 2020_09_14_233923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2019_10_13_152618) do
     t.integer "net_in_cents", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "score", precision: 12, scale: 2, default: "0.0", null: false
     t.index ["leaderboard_id"], name: "index_records_on_leaderboard_id"
     t.index ["user_id"], name: "index_records_on_user_id"
   end

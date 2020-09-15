@@ -12,22 +12,22 @@ describe Record, type: :model do
     it { is_expected.to validate_presence_of(:net_in_cents) }
   end
 
-  describe ".by_win_average" do
+  describe ".by_score_and_win_average" do
     it "returns the records ordered by win average in descending order" do
-      mike = create(:record, win_count: 21, loss_count: 12)
-      bone = create(:record, win_count: 6, loss_count: 4)
-      chris = create(:record, win_count: 8, loss_count: 9)
-      jessi = create(:record, win_count: 2, loss_count: 7)
-      gia = create(:record, win_count: 6, loss_count: 11)
-      jeff = create(:record, win_count: 8, loss_count: 2)
-      matt = create(:record, win_count: 5, loss_count: 11)
+      mike = create(:record, win_count: 21, loss_count: 12, score: 10)
+      bone = create(:record, win_count: 6, loss_count: 4, score: 8)
+      chris = create(:record, win_count: 8, loss_count: 9, score: 6)
+      jessi = create(:record, win_count: 2, loss_count: 7, score: 4)
+      gia = create(:record, win_count: 6, loss_count: 11, score: 7)
+      jeff = create(:record, win_count: 8, loss_count: 2, score: 9)
+      matt = create(:record, win_count: 5, loss_count: 11, score: 5)
 
-      expect(Record.by_win_average).to eq([
-        jeff,
+      expect(Record.by_score_and_win_average).to eq([
         mike,
+        jeff,
         bone,
-        chris,
         gia,
+        chris,
         matt,
         jessi,
       ])
@@ -49,6 +49,7 @@ describe Record, type: :model do
         win_count: 2,
         loss_count: 1,
         net_in_cents: 125,
+        score: 1.25,
       )
     end
   end

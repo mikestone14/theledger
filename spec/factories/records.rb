@@ -5,5 +5,6 @@ FactoryBot.define do
     win_count { 1 }
     loss_count { 1 }
     net_in_cents { 1 }
+    score { 10 }
   end
 end

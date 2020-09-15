@@ -24,18 +24,21 @@ describe LeaderboardService do
           win_count: 2,
           loss_count: 1,
           net_in_cents: 2050,
+          score: 5.10,
         ),
         an_object_having_attributes(
           user: @chris,
           win_count: 2,
           loss_count: 2,
           net_in_cents: -300,
+          score: -0.6,
         ),
         an_object_having_attributes(
           user: @jessi,
           win_count: 1,
           loss_count: 2,
           net_in_cents: -1750,
+          score: -4.5,
         ),
       )
     end
