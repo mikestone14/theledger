@@ -1,4 +1,4 @@
-FROM ruby:2.5.1
+FROM ruby:2.6.2
 
 # use a newer version of Node to use Yarn
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
