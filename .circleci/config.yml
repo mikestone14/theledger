@@ -18,6 +18,11 @@ jobs:
           name: Install cmake
           command: sudo apt-get -y -qq update && sudo apt-get -y -qq install cmake
 
+      # Update bundler
+      - run:
+          name: Update bundler
+          command: gem install bundler
+
       # Bundle install dependencies
       - run:
           name: Install dependencies
