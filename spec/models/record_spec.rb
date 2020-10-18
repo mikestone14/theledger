@@ -91,6 +91,12 @@ describe Record, type: :model do
   end
 
   describe "#win_average" do
+    it "returns 0 when no games played" do
+      record = build_stubbed(:record, win_count: 0, loss_count: 0)
+
+      expect(record.win_average).to be_zero
+    end
+
     it "returns the win average" do
       record = build_stubbed(:record, win_count: 75, loss_count: 25)
 

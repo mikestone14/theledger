@@ -40,10 +40,12 @@ class Record < ApplicationRecord
   end
 
   def self.by_score_and_win_average
-    order(Arel.sql("score DESC, (records.win_count::float / (records.win_count + records.loss_count)) desc"))
+    order(Arel.sql("score DESC, (records.win_count::float / ((case when records.win_count = 0 then 1 else records.win_count end) + records.loss_count)) desc"))
   end
 
   def win_average
+    return 0 if games_played.zero?
+
     (win_count.to_f / games_played).round(3)
   end
 
