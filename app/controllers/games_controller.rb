@@ -12,7 +12,7 @@ class GamesController < ApplicationController
     if @game.save
       redirect_to dashboard_path, notice: "Game recorded."
     else
-      @users = User.all
+      @users = User.active
 
       flash.now[:alert] = @game.errors.full_messages.join(", ")
       render :new
