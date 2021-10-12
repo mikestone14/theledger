@@ -193,7 +193,8 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.6)
-    puma (3.12.6)
+    puma (4.3.9)
+      nio4r (~> 2.0)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -363,7 +364,7 @@ DEPENDENCIES
   pronto-rubocop
   pronto-scss
   pry-rails
-  puma (~> 3.12.4)
+  puma (~> 4.3.9)
   rails (= 6.0.3.4)
   rspec-its
   rspec-rails (~> 3.7)
