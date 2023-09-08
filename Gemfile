@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
-ruby "2.6.2"
+ruby "3.2.2"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '6.0.3.4'
+gem 'rails', '6.1.7.6'
 gem 'bcrypt', '~> 3.1.7'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 # Use postgresql as the database for Active Record
@@ -60,17 +60,10 @@ group :development, :test do
   gem 'bundler-audit'
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
-  gem 'gnar-style', require: false
   gem 'lol_dba'
   gem 'okcomputer'
-  gem 'pronto'
-  gem 'pronto-brakeman', require: false
-  gem 'pronto-rubocop', require: false
-  gem 'pronto-scss', require: false
   gem 'pry-rails'
   gem 'rspec-its'
   gem 'rspec-rails', '~> 3.7'
-  gem 'scss_lint', require: false
   gem 'shoulda-matchers'
-  gem 'simplecov', require: false
 end
